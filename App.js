@@ -21,7 +21,7 @@ export default class App extends React.Component {
   //at minimum React components need a render method
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <StatusBar hidden={true} />
         <Text style={styles.defaultText}>Sierra</Text>
         <Text style={[styles.defaultText,styles.selectedText]}>Tanner</Text>
@@ -34,8 +34,15 @@ export default class App extends React.Component {
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#DDD',
+  },
   defaultText: {
-    fontSize: 100,
+    fontSize: 20,
     padding: 10,
     margin: 5,
     borderWidth: StyleSheet.hairlineWidth,
