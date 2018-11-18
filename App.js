@@ -4,10 +4,16 @@
 // import ui components (the View and Text components) from react native
 // Here we are using an ES 6 destructuring statment in conjunction with an import statement
 // instead of importing the entire library, we will use curly brackets to import just these two components
-import { StyleSheet, View, Text, AppRegistry, StatusBar } from 'react-native'
+import { Dimensions, Image, ImageBackground, StyleSheet, View, Text, AppRegistry, StatusBar } from 'react-native'
 
 // import the entire react library into a variable called 'React'
 import React from 'react'
+
+
+// image an Image
+import picMiniBus from './assets/minibus.jpeg'
+import picLoft from './assets/loft.jpg'
+import picTech from './assets/tech.jpg'
 
 // create a react Component
 // by creating new object called 'App' and that object is an extension of the react component
@@ -23,9 +29,15 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden={true} />
-        <Text style={styles.defaultText}>Sierra</Text>
-        <Text style={[styles.defaultText,styles.selectedText]}>Tanner</Text>
-        <Text style={styles.defaultText}>Travis</Text>
+        <ImageBackground style={styles.pic} source={picMiniBus}>
+          <Text style={styles.userName}>Mini BUUUS</Text>
+        </ImageBackground>
+        <ImageBackground style={styles.pic} source={picTech}>
+          <Text style={styles.userName}>Technology</Text>
+        </ImageBackground>
+        <ImageBackground style={styles.pic} source={picLoft}>
+          <Text style={styles.userName}>Loft</Text>
+        </ImageBackground>
       </View>
     );
   }
@@ -34,12 +46,23 @@ export default class App extends React.Component {
 
 
 const styles = StyleSheet.create({
+  pic: {
+    flex: 1,
+    width: Dimensions.get('window').width,
+    resizeMode: 'cover',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+  },
   container: {
     flex: 1,
-    flexDirection: 'row',
+    justifyContent: 'space-around',
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#DDD',
+  },
+  userName: {
+    fontSize: 30,
+    backgroundColor: 'rgba(0,0,0,.7)',
+    color: 'white',
+    padding: 10,
   },
   defaultText: {
     fontSize: 20,
